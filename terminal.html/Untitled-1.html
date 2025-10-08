@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Basit Terminal</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #0f0;
+      font-family: monospace;
+      padding: 20px;
+    }
+    #output {
+      margin-bottom: 10px;
+    }
+    input {
+      background-color: #000;
+      color: #0f0;
+      border: none;
+      width: 100%;
+      font-size: 16px;
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="output">kenan@terminal:~$ Komut girin: <strong>open site</strong></div>
+  <input type="text" id="commandInput" placeholder="örnek: open site">
+
+  <script>
+    const input = document.getElementById('commandInput');
+    const output = document.getElementById('output');
+
+    input.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        const cmd = input.value.trim();
+        output.innerHTML += `<br>kenan@terminal:~$ ${cmd}`;
+        if (cmd === 'open site') {
+          output.innerHTML += `<br>Site açılıyor...`;
+          window.location.href = 'https://kenanpoculu.github.io/ybs241-odev/';
+        } else {
+          output.innerHTML += `<br>Bilinmeyen komut: ${cmd}`;
+        }
+        input.value = '';
+      }
+    });
+  </script>
+</body>
+</html>
